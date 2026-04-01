@@ -1,0 +1,278 @@
+{
+  "project_id": "388f5b78-444c-4d02-9521-4090b0180a1b",
+  "project_name": "Conversación con contexto / RAG",
+  "goal": "Implementar el proyecto: Conversación con contexto / RAG\n\nVisión: El proyecto 'Generación de Audiencias Técnicas' ya cuenta con una capacidad de 'Conversación con contexto / RAG' para interactuar con su código y documentación. La feature HU-03 tiene como objetivo potenciar esta capacidad, permitiend",
+  "last_updated": "2026-04-01T19:04:05.505359Z",
+  "total_items": 12,
+  "completed_count": 12,
+  "status": "completed",
+  "current_item_index": 12,
+  "spec_file": "SPEC.md",
+  "plan_file": "DEVELOPMENT_PLAN.md",
+  "contract_manifest_available": true,
+  "all_files_created": [
+    "shared/types/user.ts",
+    "shared/types/conversation.ts",
+    "shared/types/document.ts",
+    "shared/types/query.ts",
+    "shared/config.py",
+    "shared/database.py",
+    "shared/redis_client.py",
+    "shared/exceptions.py",
+    "shared/constants.py",
+    "backend/auth-service/main.py",
+    "backend/auth-service/config.py",
+    "backend/auth-service/models/user.py",
+    "backend/document-service/database/chunk.py",
+    "backend/document-service/requirements.txt",
+    "backend/document-service/router.py",
+    "frontend/src/components/ChatWindow.tsx",
+    "frontend/src/components/DocumentList.tsx",
+    "frontend/src/components/MessageBubble.tsx",
+    "frontend/vite.config.ts",
+    "backend/document-service/service.py",
+    "frontend/src/api/documents.ts",
+    "frontend/src/api/query.ts",
+    "frontend/src/hooks/useAuth.ts",
+    "docker-compose.yml",
+    "run.sh",
+    "README.md",
+    ".dockerignore",
+    ".env.example",
+    ".gitignore",
+    "backend/auth-service/Dockerfile",
+    "backend/conversation-service/Dockerfile",
+    "backend/document-service/Dockerfile",
+    "backend/nginx.conf",
+    "backend/query-service/Dockerfile",
+    "frontend/Dockerfile",
+    "frontend/nginx.conf",
+    "run.bat",
+    "shared/security.py",
+    "backend/auth-service/router.py",
+    "backend/auth-service/service.py",
+    "backend/auth-service/models/token.py",
+    "backend/auth-service/database/user.py",
+    "backend/auth-service/requirements.txt",
+    "frontend/shared/types/document.ts",
+    "frontend/shared/types/query.ts",
+    "backend/query-service/main.py",
+    "backend/query-service/config.py",
+    "backend/query-service/router.py",
+    "backend/query-service/models/query.py",
+    "backend/query-service/models/response.py",
+    "backend/query-service/services/embedding.py"
+  ],
+  "items": [
+    {
+      "item_number": 1,
+      "title": "Foundation — Shared Types, Config, Database Schemas, Constants (1/2)",
+      "wave": 1,
+      "files_created": [
+        "shared/types/user.ts",
+        "shared/types/conversation.ts",
+        "shared/types/document.ts",
+        "shared/types/query.ts",
+        "shared/config.py",
+        "shared/database.py",
+        "shared/redis_client.py",
+        "shared/exceptions.py",
+        "shared/constants.py"
+      ],
+      "completed_at": "2026-04-01T18:12:18.903058Z"
+    },
+    {
+      "item_number": 2,
+      "title": "Foundation — Shared Types, Config, Database Schemas, Constants (2/2)",
+      "wave": 1,
+      "files_created": [
+        "shared/constants.py",
+        "shared/config.py",
+        "shared/database.py",
+        "shared/exceptions.py",
+        "shared/redis_client.py",
+        "shared/types/conversation.ts",
+        "shared/types/document.ts",
+        "shared/types/query.ts",
+        "shared/types/user.ts"
+      ],
+      "completed_at": "2026-04-01T18:12:18.903058Z"
+    },
+    {
+      "item_number": 3,
+      "title": "Auth Service (Port 8001) — Authentication & User Management",
+      "wave": 2,
+      "files_created": [
+        "backend/auth-service/main.py",
+        "backend/auth-service/config.py",
+        "backend/auth-service/models/user.py",
+        "backend/document-service/database/chunk.py",
+        "backend/document-service/requirements.txt",
+        "backend/document-service/router.py",
+        "frontend/src/components/ChatWindow.tsx",
+        "frontend/src/components/DocumentList.tsx",
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/vite.config.ts"
+      ],
+      "completed_at": "2026-04-01T18:46:36.571733Z"
+    },
+    {
+      "item_number": 4,
+      "title": "Query Processing Service (Port 8002) — RAG Query Processing",
+      "wave": 2,
+      "files_created": [
+        "backend/auth-service/config.py",
+        "backend/auth-service/main.py",
+        "backend/document-service/database/chunk.py",
+        "backend/document-service/requirements.txt",
+        "backend/document-service/router.py",
+        "frontend/src/components/ChatWindow.tsx",
+        "frontend/src/components/DocumentList.tsx",
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/vite.config.ts"
+      ],
+      "completed_at": "2026-04-01T18:46:36.571733Z"
+    },
+    {
+      "item_number": 5,
+      "title": "Document Service (Port 8003) — Document Upload & Processing",
+      "wave": 2,
+      "files_created": [
+        "backend/document-service/router.py",
+        "backend/document-service/service.py",
+        "backend/document-service/database/chunk.py",
+        "backend/document-service/requirements.txt",
+        "backend/auth-service/config.py",
+        "backend/auth-service/main.py",
+        "frontend/src/components/ChatWindow.tsx",
+        "frontend/src/components/DocumentList.tsx",
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/vite.config.ts"
+      ],
+      "completed_at": "2026-04-01T18:46:36.571733Z"
+    },
+    {
+      "item_number": 6,
+      "title": "Conversation Service (Port 8004) — Conversation & Message Management",
+      "wave": 2,
+      "files_created": [
+        "backend/auth-service/config.py",
+        "backend/auth-service/main.py",
+        "backend/document-service/database/chunk.py",
+        "backend/document-service/requirements.txt",
+        "backend/document-service/router.py",
+        "frontend/src/components/ChatWindow.tsx",
+        "frontend/src/components/DocumentList.tsx",
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/vite.config.ts"
+      ],
+      "completed_at": "2026-04-01T18:46:36.571733Z"
+    },
+    {
+      "item_number": 7,
+      "title": "Frontend — React 18 Web Application (1/3)",
+      "wave": 2,
+      "files_created": [
+        "frontend/src/api/documents.ts",
+        "frontend/src/api/query.ts",
+        "frontend/src/hooks/useAuth.ts",
+        "backend/auth-service/config.py",
+        "backend/auth-service/main.py",
+        "backend/document-service/database/chunk.py",
+        "backend/document-service/requirements.txt",
+        "backend/document-service/router.py",
+        "frontend/src/components/ChatWindow.tsx",
+        "frontend/src/components/DocumentList.tsx",
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/vite.config.ts"
+      ],
+      "completed_at": "2026-04-01T18:46:36.571733Z"
+    },
+    {
+      "item_number": 8,
+      "title": "Frontend — React 18 Web Application (2/3)",
+      "wave": 2,
+      "files_created": [
+        "frontend/src/components/DocumentList.tsx",
+        "frontend/src/components/ChatWindow.tsx",
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/vite.config.ts",
+        "backend/auth-service/config.py",
+        "backend/auth-service/main.py",
+        "backend/document-service/database/chunk.py",
+        "backend/document-service/requirements.txt",
+        "backend/document-service/router.py"
+      ],
+      "completed_at": "2026-04-01T18:46:36.571733Z"
+    },
+    {
+      "item_number": 9,
+      "title": "Frontend — React 18 Web Application (3/3)",
+      "wave": 2,
+      "files_created": [
+        "backend/auth-service/config.py",
+        "backend/auth-service/main.py",
+        "backend/document-service/database/chunk.py",
+        "backend/document-service/requirements.txt",
+        "backend/document-service/router.py",
+        "frontend/src/components/ChatWindow.tsx",
+        "frontend/src/components/DocumentList.tsx",
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/vite.config.ts"
+      ],
+      "completed_at": "2026-04-01T18:46:36.571733Z"
+    },
+    {
+      "item_number": 10,
+      "title": "Infrastructure & Deployment — Docker Orchestration",
+      "wave": 3,
+      "files_created": [
+        "docker-compose.yml",
+        "run.sh",
+        "README.md",
+        ".dockerignore",
+        ".env.example",
+        ".gitignore",
+        "backend/auth-service/Dockerfile",
+        "backend/conversation-service/Dockerfile",
+        "backend/document-service/Dockerfile",
+        "backend/nginx.conf",
+        "backend/query-service/Dockerfile",
+        "frontend/Dockerfile",
+        "frontend/nginx.conf",
+        "run.bat"
+      ],
+      "completed_at": "2026-04-01T18:47:58.849818Z"
+    },
+    {
+      "item_number": 11,
+      "title": "Recovery Attempt 1/2: Fix Missing/Defective Files",
+      "wave": 1,
+      "files_created": [
+        "shared/security.py",
+        "backend/auth-service/router.py",
+        "backend/auth-service/service.py",
+        "backend/auth-service/models/token.py",
+        "backend/auth-service/database/user.py",
+        "backend/auth-service/requirements.txt",
+        "frontend/shared/types/document.ts",
+        "frontend/shared/types/query.ts"
+      ],
+      "completed_at": "2026-04-01T18:58:16.664801Z"
+    },
+    {
+      "item_number": 12,
+      "title": "Recovery Attempt 2/2: Fix Missing/Defective Files",
+      "wave": 1,
+      "files_created": [
+        "backend/query-service/main.py",
+        "backend/query-service/config.py",
+        "backend/query-service/router.py",
+        "backend/query-service/models/query.py",
+        "backend/query-service/models/response.py",
+        "backend/query-service/services/embedding.py"
+      ],
+      "completed_at": "2026-04-01T19:04:05.505359Z"
+    }
+  ]
+}

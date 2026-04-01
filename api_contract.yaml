@@ -1,0 +1,44 @@
+# API_CONTRACT.md
+
+## Authentication Service (Port 8001)
+
+| Method | Path | Request Body | Response | Status Codes | Auth |
+|--------|------|--------------|----------|--------------|------|
+| POST | /api/auth/register | `{"username": "string", "email": "string", "password": "string"}` | `{"id": "string", "username": "string", "email": "string", "created_at": "datetime", "is_active": true}` | 201 | No |
+| POST | /api/auth/login | `{"username": "string", "password": "string"}` | `{"access_token": "string", "token_type": "bearer", "user": {...}}` | 200 | No |
+| POST | /api/auth/refresh | `{"refresh_token": "string"}` | `{"access_token": "string", "token_type": "bearer"}` | 200 | No |
+| GET | /api/auth/me | (Bearer Token) | `{"id": "string", "username": "string", "email": "string", ...}` | 200 | Yes |
+
+## Query Processing Service (Port 8002)
+
+| Method | Path | Request Body | Response | Status Codes | Auth |
+|--------|------|--------------|----------|--------------|------|
+| POST | /api/query | `{"conversation_id": "string", "message": "string", "include_sources": true}` | `{"response": "string", "conversation_id": "string", "message_id": "string", "sources": [...], "cached": false}` | 200 | Yes |
+| GET | /api/query/history/{conversation_id} | (Bearer Token) | `{"messages": [...]}` | 200 | Yes |
+
+## Document Service (Port 8003)
+
+| Method | Path | Request Body | Response | Status Codes | Auth |
+|--------|------|--------------|----------|--------------|------|
+| POST | /api/documents/upload | multipart/form-data (file) | `{"id": "string", "status": "pending", "message": "string"}` | 202 | Yes |
+| GET | /api/documents | (Bearer Token) | `{"documents": [...]}` | 200 | Yes |
+| GET | /api/documents/{document_id} | (Bearer Token) | `{"id": "string", "status": "completed", "chunks_count": 10}` | 200 | Yes |
+| DELETE | /api/documents/{document_id} | (Bearer Token) | `{"message": "Document deleted successfully"}` | 200 | Yes |
+
+## Conversation Service (Port 8004)
+
+| Method | Path | Request Body | Response | Status Codes | Auth |
+|--------|------|--------------|----------|--------------|------|
+| POST | /api/conversations | `{"title": "string"}` | `{"id": "string", "user_id": "string", "title": "string", ...}` | 201 | Yes |
+| GET | /api/conversations | (Bearer Token) | `{"conversations": [...]}` | 200 | Yes |
+| GET | /api/conversations/{conversation_id} | (Bearer Token) | `{"id": "string", "messages": [...]}` | 200 | Yes |
+| DELETE | /api/conversations/{conversation_id} | (Bearer Token) | `{"message": "Conversation deleted successfully"}` | 200 | Yes |
+
+## Health Check Endpoints
+
+| Method | Path | Response | Status Codes | Auth |
+|--------|------|----------|--------------|------|
+| GET | /health | `{"status": "healthy", "service": "auth-service", "version": "1.0.0"}` | 200 | No |
+| GET | /health | `{"status": "healthy", "service": "query-service", "version": "1.0.0"}` | 200 | No |
+| GET | /health | `{"status": "healthy", "service": "document-service", "version": "1.0.0"}` | 200 | No |
+| GET | /health | `{"status": "healthy", "service": "conversation-service", "version": "1.0.0"}` | 200 | No |
